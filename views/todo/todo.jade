@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .row#form-content
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
+      form#todo-form.form-inline(role="form")
+        .form-group
+          label(for="new-todo") Add ToDo
+          input#new-todo.form-control(type="text", placeholder="Добавьте новое задание")
+        button.btn.btn-success(type="submit") Добавить
+
+  #tabs-content
+    .row
+      .col-xs-12.col-sm-12.col-md-12.col-lg-12
+        #tabs(role="tabpanel")
+          ul.nav.nav-tabs(role="tablist")
+            li(role="presentation")
+              a(href="#all", aria-controls="all", role="tab", data-toggle="tab") Все
+            li(role="presentation")
+              a(href="#checked", aria-controls="checked", role="tab", data-toggle="tab") Отмеченные
+            li(role="presentation")
+              a(href="#unchecked", aria-controls="unchecked", role="tab", data-toggle="tab") Не отмеченные
+
+          .tab-content
+            #all.tab-pane(role="tabpanel")
+              p All
+            #checked.tab-pane(role="tabpanel")
+              p Checked
+            #unchecked.tab-pane(role="tabpanel")
+              p Unchecked
+
+        include pagination
+
+  .row#action-content
+    .col-xs-12.col-sm-12.col-md-12.col-lg-12
