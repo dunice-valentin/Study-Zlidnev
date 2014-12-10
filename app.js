@@ -5,8 +5,6 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-
 var app = express();
 
 // view engine setup
@@ -23,10 +21,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*******************************************************************************
+* Connect to DB, and load models
+* *****************************************************************************/
+require("./config/database");
+
+/*******************************************************************************
 *
 * Router Goes HERE
 *
 * *****************************************************************************/
+var routes = require('./routes/todos');
 app.use('/', routes);
 
 /// catch 404 and forward to error handler

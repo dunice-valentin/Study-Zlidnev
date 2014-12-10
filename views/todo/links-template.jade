@@ -1,0 +1,12 @@
+//
+   Created by dunice on 10.12.14.
+script#todo-links-template(type="javascript/template")
+  | <ul class="links-list">
+  |   <% _.each(links, function(link, i) { %>
+  |     <li role="presentation" data-id="<%= link._id %>">
+  |       <input type="checkbox" <%= link.state ? 'checked="checked"' : '' %>>
+  |       <span><%= link.title %></span>
+  |       <span class="glyphicon glyphicon-remove"></span>
+  |     </li>
+  |   <% }) %>
+  | </ul>

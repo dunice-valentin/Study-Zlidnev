@@ -1,5 +1,5 @@
 {
-  "name": "zlydnev",
+  "name": "todo-zlydnev",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -12,17 +12,14 @@
     "express": "~4.4.5",
     "gulp-rename": "^1.2.0",
     "jade": "~1.3.1",
+    "mongoose": "^3.8.20",
     "morgan": "~1.1.1",
     "serve-favicon": "~2.0.1"
   },
   "devDependencies": {
-    "del": "^1.1.0",
     "gulp": "~3.8.8",
-    "gulp-concat": "^2.4.2",
-    "gulp-minify-css": "^0.3.11",
     "gulp-less": "^1.3.6",
     "gulp-nodemon": "~1.0.4",
-    "gulp-livereload": "~2.1.1",
-    "gulp-rename": "^1.2.0"
+    "gulp-livereload": "~2.1.1"
   }
 }

@@ -7,17 +7,22 @@ nav#todo-pagination
       span(aria-hidden="true")
         a(href="#") &laquo;
 
-    li
-      a(href="#") 1
-    li
-      a(href="#") 2
     li.active
-      a(href="#") 3
-    li
-      a(href="#") 4
-    li
-      a(href="#") 5
+      a(href="#") 1
 
     li
       span(aria-hidden="true")
         a(href="#") &raquo;
+
+script#todo-pagination-template(type="javascript/template")
+  | <li><span aria-hidden="true">
+  |   <a href="#" data-page="<%= (selectedPage > 1 ? selectedPage-1 : 1) %>">&laquo;</a>
+  | </span></li>
+  | <% for(var i=0; i<pageCount; i++) { %>
+  |   <li class="<%= i+1==selectedPage ? 'active' : '' %>">
+  |     <a href="#" data-page="<%= i+1 %>"><%= i+1 %></a>
+  |   </li>
+  | <% } %>
+  | <li><span aria-hidden="true">
+  |   <a href="#" data-page="<%= (selectedPage < pageCount ? selectedPage+1 : pageCount) %>">&raquo;</a>
+  | </span></li>

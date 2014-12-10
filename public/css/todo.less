@@ -44,4 +44,36 @@ code {
   .tab-content {
     min-height: 350px;
   }
+
+  ul.links-list {
+    list-style: none;
+    max-width: 400px;
+    margin-top: 5px;
+
+    li {
+      min-height: 2em;
+      vertical-align: middle;
+      position: relative;
+
+      input {
+        margin-right: 0.5em;
+      }
+    }
+
+    .glyphicon {
+      color: #a94442;
+      visibility: hidden;
+      position: absolute;
+      right: 0;
+      opacity: 0.5;
+    }
+    li:hover .glyphicon {
+      visibility: visible;
+
+      &:hover {
+        opacity: 1;
+        cursor: pointer;
+      }
+    }
+  }
 }

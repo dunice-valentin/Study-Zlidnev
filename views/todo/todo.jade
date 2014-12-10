@@ -1,5 +1,8 @@
 extends ../layout
 
+block js
+  script(src='/js/todo-app.js')
+
 block content
   .row#form-content
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
@@ -14,7 +17,7 @@ block content
       .col-xs-12.col-sm-12.col-md-12.col-lg-12
         #tabs(role="tabpanel")
           ul.nav.nav-tabs(role="tablist")
-            li(role="presentation")
+            li.active(role="presentation")
               a(href="#all", aria-controls="all", role="tab", data-toggle="tab") Все
             li(role="presentation")
               a(href="#checked", aria-controls="checked", role="tab", data-toggle="tab") Отмеченные
@@ -22,12 +25,10 @@ block content
               a(href="#unchecked", aria-controls="unchecked", role="tab", data-toggle="tab") Не отмеченные
 
           .tab-content
-            #all.tab-pane(role="tabpanel")
-              p All
-            #checked.tab-pane(role="tabpanel")
-              p Checked
-            #unchecked.tab-pane(role="tabpanel")
-              p Unchecked
+            include links-template
+            #all.tab-pane.fade.in.active(role="tabpanel")
+            #checked.tab-pane.fade(role="tabpanel")
+            #unchecked.tab-pane.fade(role="tabpanel")
 
         include pagination
 

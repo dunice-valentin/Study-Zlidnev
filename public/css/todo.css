@@ -38,3 +38,30 @@ code {
 #tabs-content .tab-content {
   min-height: 350px;
 }
+#tabs-content ul.links-list {
+  list-style: none;
+  max-width: 400px;
+  margin-top: 5px;
+}
+#tabs-content ul.links-list li {
+  min-height: 2em;
+  vertical-align: middle;
+  position: relative;
+}
+#tabs-content ul.links-list li input {
+  margin-right: 0.5em;
+}
+#tabs-content ul.links-list .glyphicon {
+  color: #a94442;
+  visibility: hidden;
+  position: absolute;
+  right: 0;
+  opacity: 0.5;
+}
+#tabs-content ul.links-list li:hover .glyphicon {
+  visibility: visible;
+}
+#tabs-content ul.links-list li:hover .glyphicon:hover {
+  opacity: 1;
+  cursor: pointer;
+}
