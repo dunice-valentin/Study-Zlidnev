@@ -19,11 +19,28 @@ $(document).ready(function() {
     $("#new-todo").val("");
   });
 
-  $("#tabs").on("click", "input:checkbox", function() {
+  $("#tabs").on("click", "input:checkbox", function(event) {
     var id = $(this).closest("li").data("id");
     var newState = this.checked;
     App.update(id, {state: newState});
   });
+  $("#tabs").on("dblclick", "li", function(event) {
+    $("span", this).hide();
+    $("input:text", this).show().focus();
+  });
+  $("#tabs")
+    .on("blur", "input:text", function(event) {
+      $(this).hide();
+      $("#tabs li span").show();
+    })
+    .on("keypress", "input:text", function(event) {
+      if (event.which === 13) {
+        event.preventDefault();
+        var id = $(this).closest("li").data("id");
+        var title = $(this).val();
+        App.update(id, {title: title});
+      }
+    });
 
   $("ul.pagination").on("click", "a", function(event) {
     var page = $(this).data("page");

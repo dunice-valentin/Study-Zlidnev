@@ -48,8 +48,11 @@ code {
   vertical-align: middle;
   position: relative;
 }
-#tabs-content ul.links-list li input {
+#tabs-content ul.links-list li input[type="checkbox"] {
   margin-right: 0.5em;
+}
+#tabs-content ul.links-list li input[type="text"] {
+  display: none;
 }
 #tabs-content ul.links-list .glyphicon {
   color: #a94442;

@@ -6,6 +6,7 @@ script#todo-links-template(type="javascript/template")
   |     <li role="presentation" data-id="<%= link._id %>">
   |       <input type="checkbox" <%= link.state ? 'checked="checked"' : '' %>>
   |       <span><%= link.title %></span>
+  |       <input type="text" value="<%= link.title %>"/>
   |       <span class="glyphicon glyphicon-remove"></span>
   |     </li>
   |   <% }) %>
