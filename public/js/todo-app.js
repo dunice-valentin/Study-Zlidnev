@@ -23,6 +23,14 @@ $(document).ready(function() {
     var newState = this.checked;
     App.update(id, {state: newState});
   });
+
+  $("ul.pagination").on("click", "a", function(event) {
+    var page = $(this).data("page");
+    page = parseInt(page);
+    if (!_.isNaN(page)) {
+      App.gotoPage(page);
+    }
+  });
 });
 
 function TodoApp() {
@@ -40,7 +48,7 @@ function TodoApp() {
     self._get(self.render);
   };
   self.render = function() {
-    var begin = (self.selectedPag-1) * self.perPage,
+    var begin = (self.selectedPage-1) * self.perPage,
         end = self.selectedPage * self.perPage;
 
     $(".tab-pane#"+ self.state).html(self.linksListTemplate({
@@ -108,6 +116,19 @@ function TodoApp() {
         alert(textStatus);
       }
     });
+  };
+  self.gotoPage = function(page) {
+    if (!_.isNumber(page) || _.isNaN(page)) {
+      alert("Не могу перейти к странице", page);
+      return void 0;
+    }
+
+    if (page < 1) {
+      page = 1
+    }
+
+    self.selectedPage = page;
+    self.sync();
   };
 
   /*****************************************************************************
