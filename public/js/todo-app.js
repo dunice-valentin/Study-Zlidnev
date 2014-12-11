@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     var text = $("#new-todo").val();
     App.addTodo(text);
+    $("#new-todo").val("");
   });
 
   $("#tabs").on("click", "input:checkbox", function() {
@@ -31,6 +32,17 @@ $(document).ready(function() {
       App.gotoPage(page);
     }
   });
+
+  $("#tabs").on("click", ".glyphicon-remove", function(event) {
+    var id = $(this).closest("li").data("id");
+    App.remove({ _id: id });
+  });
+  $("#remove-checked").on("click", function(event) {
+    App.remove({state: true});
+  });
+  $("#remove-all").on("click", function(event) {
+    App.remove();
+  });
 });
 
 function TodoApp() {
@@ -45,7 +57,14 @@ function TodoApp() {
   self.linksListTemplate = _.template($("#todo-links-template").text());
 
   self.sync = function() {
-    self._get(self.render);
+    self._get(function() {
+      if (self.selectedPage < 1 ||
+          self.selectedPage > self.todoList.length/self.perPage + 1) {
+        self.selectedPage = 1;
+      }
+
+      self.render();
+    });
   };
   self.render = function() {
     var begin = (self.selectedPage-1) * self.perPage,
@@ -129,6 +148,32 @@ function TodoApp() {
 
     self.selectedPage = page;
     self.sync();
+  };
+  self.remove = function(attrs) {
+    if (!_.isObject(attrs)) {
+      attrs = {};
+    }
+    _.each(attrs, function(value, key) {
+      if (key === "state") {
+        attrs[key] = (value === true || value === "true");
+      }
+      else {
+        attrs[key] = value.toString();
+      }
+    });
+
+    $.ajax({
+      url: "/todos/",
+      type: "DELETE",
+      data: attrs,
+      dataType: "json",
+      success: function (data, textStatus, jqXHR) {
+        self.sync();
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+        console.error("/todos/", textStatus, errorThrown);
+      }
+    });
   };
 
   /*****************************************************************************

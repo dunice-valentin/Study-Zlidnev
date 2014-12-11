@@ -1,6 +1,7 @@
 var mongoose = require("mongoose");
 var express = require('express'),
     router = express.Router();
+var _ = require("underscore");
 
 /*******************************************************************************
 * Load models from mongoose to our controllers
@@ -100,7 +101,25 @@ router.put("/todos/", function (req, res, next) {
   })
 });
 router.delete("/todos/", function (req, res, next) {
+  var removeQuery = {};
 
+  _.each(req.body, function(value, key) {
+    if (key === "_id") {
+      removeQuery[key] = mongoose.Types.ObjectId(value);
+    }
+    else {
+      removeQuery[key] = value.toString();
+    }
+  });
+
+  TodoModel.remove(removeQuery, function (err, removedCount) {
+    if (err) {
+      console.console.error("Error", err);
+      return res.status(500).json(err);
+    }
+
+    return res.status(200).json({removedCount: removedCount});
+  });
 });
 
 module.exports = router;
