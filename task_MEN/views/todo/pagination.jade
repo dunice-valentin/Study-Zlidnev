@@ -1,6 +1,7 @@
 //
    Created by dunice on 10.12.14.
 
+// create block for our pagination
 nav#todo-pagination
   ul.pagination
     li
@@ -14,6 +15,7 @@ nav#todo-pagination
       span(aria-hidden="true")
         a(href="#") &raquo;
 
+// underscore template for generating pagination. see http://underscorejs.org/#template
 script#todo-pagination-template(type="javascript/template")
   | <li><span aria-hidden="true">
   |   <a href="#" data-page="<%= (selectedPage > 1 ? selectedPage-1 : 1) %>">&laquo;</a>

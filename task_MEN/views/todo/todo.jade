@@ -1,9 +1,13 @@
 extends ../layout
 
 block js
+  // extend main JS section with our script
   script(src='/js/todo-app.js')
 
 block content
+  // 
+    define 3 min section of TODO list: form, tabs with todos, action buttons
+
   .row#form-content
     .col-xs-12.col-sm-12.col-md-12.col-lg-12
       form#todo-form.form-inline(role="form")
@@ -26,6 +30,7 @@ block content
 
           .tab-content
             include links-template
+
             #all.tab-pane.fade.in.active(role="tabpanel")
             #checked.tab-pane.fade(role="tabpanel")
             #unchecked.tab-pane.fade(role="tabpanel")

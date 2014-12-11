@@ -13,12 +13,16 @@ html(lang='en')
     script(src='/components/jquery/dist/jquery.min.js')
     script(src='/components/bootstrap/dist/js/bootstrap.min.js')
     script(src='/components/underscore/underscore-min.js')
-    script(src='http://localhost:35729/livereload.js')
+    // should be commented for "stable" version. Only for dev purposes
+    // script(src='http://localhost:35729/livereload.js')
     block js
   body
+    // move all header with all future links, etc to independent template
     include header
 
+    // wrap all content with .container-fluid
     .container-fluid
       block content
 
+    // same to footer
     include footer
