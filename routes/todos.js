@@ -65,7 +65,7 @@ router.put("/todos/", function (req, res, next) {
     setQuery["title"] = req.body.title;
   }
   if (req.body.state !== undefined) {
-    setQuery["state"] = Boolean(req.body.state);
+    setQuery["state"] = (req.body.state === true || req.body.state === "true");
   }
 
   TodoModel.findById(id, function (err, todo) {

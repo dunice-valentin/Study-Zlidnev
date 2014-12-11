@@ -109,7 +109,7 @@ function TodoApp() {
           self.todoList[i] = data;
         }
 
-        self.render();
+        self._get(self.render);
       },
       error: function (jqXHR, textStatus, errorThrown) {
         console.error("/todos/", textStatus, errorThrown);
