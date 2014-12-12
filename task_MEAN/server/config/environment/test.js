@@ -5,6 +5,6 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/taskmean-test'
+    uri: 'mongodb://localhost/task_mean-test'
   }
 };

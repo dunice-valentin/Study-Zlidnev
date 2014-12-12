@@ -5,7 +5,7 @@
 module.exports = {
   // MongoDB connection options
   mongo: {
-    uri: 'mongodb://localhost/taskmean-dev'
+    uri: 'mongodb://localhost/task_mean-dev'
   },
 
   seedDB: true
